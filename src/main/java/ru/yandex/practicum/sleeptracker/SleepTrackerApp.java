@@ -24,8 +24,9 @@ public class SleepTrackerApp {
                 new SleeplessNightsAnalysis(),
                 new SleepChronotypeAnalysis()
         );
-        analyses.stream().map(analysis -> analysis.apply(sessions)).forEach(
-                result -> System.out.println(result.getDescription() + result.getValue())
+        analyses.stream()
+                .map(analysis -> analysis.apply(sessions))
+                .forEach(result -> System.out.println(result.getDescription() + result.getValue())
         );
     }
 

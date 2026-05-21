@@ -21,7 +21,9 @@ public class SleeplessNightsAnalysis implements Function<List<SleepingSession>, 
             startDate = startDate.plusDays(1);
         }
         long totalNights = Period.between(startDate, endDate).getDays();
-        long nightsWithSleep = sessions.stream().filter(session -> session.isNightSleep()).count();
+        long nightsWithSleep = sessions.stream()
+                .filter(session -> session.isNightSleep())
+                .count();
         long sleeplessNights = totalNights - nightsWithSleep;
 
         if (sleeplessNights < 0) {

@@ -9,9 +9,15 @@ public class SleepChronotypeAnalysis implements Function<List<SleepingSession>, 
         List<SleepingSession> nightSessions = sessions.stream()
                 .filter(session -> session.isNightSleep())
                 .toList();
-        long owl = nightSessions.stream().filter(s -> s.getChronotype() == SleepChronotype.OWL).count();
-        long lark = nightSessions.stream().filter(s -> s.getChronotype() == SleepChronotype.LARK).count();
-        long dove = nightSessions.stream().filter(s -> s.getChronotype() == SleepChronotype.DOVE).count();
+        long owl = nightSessions.stream()
+                .filter(s -> s.getChronotype() == SleepChronotype.OWL)
+                .count();
+        long lark = nightSessions.stream()
+                .filter(s -> s.getChronotype() == SleepChronotype.LARK)
+                .count();
+        long dove = nightSessions.stream()
+                .filter(s -> s.getChronotype() == SleepChronotype.DOVE)
+                .count();
 
         SleepChronotype resultChronotype;
         if (owl > lark && owl > dove) {
