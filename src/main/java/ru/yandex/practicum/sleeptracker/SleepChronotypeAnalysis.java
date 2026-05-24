@@ -34,6 +34,7 @@ public class SleepChronotypeAnalysis implements Function<List<SleepingSession>, 
         }
         return new SleepAnalysisResult("Хронотип пользователя: ", result);
     }
+
         private SleepChronotype classify(SleepingSession session) {
             LocalTime start = session.getStart().toLocalTime();
             LocalTime end = session.getEnd().toLocalTime();
