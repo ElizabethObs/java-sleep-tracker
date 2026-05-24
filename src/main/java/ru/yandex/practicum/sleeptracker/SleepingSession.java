@@ -32,22 +32,10 @@ public class SleepingSession {
     }
 
     public boolean isNightSleep() {
-        LocalTime endTime = end.toLocalTime();
-        boolean overnightSleep = !start.toLocalDate().equals(end.toLocalDate());
-        boolean afterMidnightSleep = endTime.isBefore(LocalTime.of(6, 0));
-        return overnightSleep || afterMidnightSleep;
-    }
-
-    public SleepChronotype getChronotype() {
         LocalTime startTime = start.toLocalTime();
         LocalTime endTime = end.toLocalTime();
-
-        if (startTime.isAfter(LocalTime.of(23, 0)) && endTime.isAfter(LocalTime.of(9, 0))) {
-            return SleepChronotype.OWL;
-        }
-        if (startTime.isBefore(LocalTime.of(22, 0)) && endTime.isBefore(LocalTime.of(7, 0))) {
-            return SleepChronotype.LARK;
-        }
-        return SleepChronotype.DOVE;
+        boolean overnightSleep = !start.toLocalDate().equals(end.toLocalDate());
+        boolean afterMidnightSleep = !endTime.isAfter(LocalTime.of(6, 0));
+        return overnightSleep || afterMidnightSleep;
     }
 }

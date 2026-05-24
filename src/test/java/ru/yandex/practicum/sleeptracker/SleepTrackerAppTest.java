@@ -28,7 +28,7 @@ public class SleepTrackerAppTest {
         List<SleepingSession> sessions = List.of();
         CountSleepSessionsAnalysis analysis = new CountSleepSessionsAnalysis();
         SleepAnalysisResult result = analysis.apply(sessions);
-        assertEquals(0L, result.getValue());
+        assertEquals(0, result.getValue());
     }
 
     // тесты для MinSleepDurationAnalysis()
@@ -51,7 +51,7 @@ public class SleepTrackerAppTest {
         List<SleepingSession> sessions = List.of();
         MinSleepDurationAnalysis analysis = new MinSleepDurationAnalysis();
         SleepAnalysisResult result = analysis.apply(sessions);
-        assertEquals(0L, result.getValue());
+        assertEquals(0, result.getValue());
     }
 
     // тесты для MaxSleepDurationAnalysis()
@@ -66,7 +66,7 @@ public class SleepTrackerAppTest {
         List<SleepingSession> sessions = List.of(session1, session2);
         MaxSleepDurationAnalysis analysis = new MaxSleepDurationAnalysis();
         SleepAnalysisResult result = analysis.apply(sessions);
-        assertEquals(600L, result.getValue());
+        assertEquals(600, result.getValue());
     }
 
     @Test
@@ -74,7 +74,7 @@ public class SleepTrackerAppTest {
         List<SleepingSession> sessions = List.of();
         MaxSleepDurationAnalysis analysis = new MaxSleepDurationAnalysis();
         SleepAnalysisResult result = analysis.apply(sessions);
-        assertEquals(0L, result.getValue());
+        assertEquals(0, result.getValue());
     }
 
     // тесты для AverageSleepDurationAnalysis()
@@ -98,7 +98,7 @@ public class SleepTrackerAppTest {
         List<SleepingSession> sessions = List.of();
         AverageSleepDurationAnalysis analysis = new AverageSleepDurationAnalysis();
         SleepAnalysisResult result = analysis.apply(sessions);
-        assertEquals(0.0, result.getValue());
+        assertEquals(0, result.getValue());
     }
 
     // тесты для BadSleepQualityAnalysis()
@@ -110,7 +110,7 @@ public class SleepTrackerAppTest {
         List<SleepingSession> sessions = List.of(session1, session2, session3);
         BadSleepQualityAnalysis analysis = new BadSleepQualityAnalysis();
         SleepAnalysisResult result = analysis.apply(sessions);
-        assertEquals(2L, result.getValue());
+        assertEquals(2, result.getValue());
     }
 
     @Test
@@ -119,7 +119,7 @@ public class SleepTrackerAppTest {
         List<SleepingSession> sessions = List.of(session);
         BadSleepQualityAnalysis analysis = new BadSleepQualityAnalysis();
         SleepAnalysisResult result = analysis.apply(sessions);
-        assertEquals(0L, result.getValue());
+        assertEquals(0, result.getValue());
     }
 
     // тесты для SleeplessNightsAnalysis
@@ -131,7 +131,7 @@ public class SleepTrackerAppTest {
         List<SleepingSession> sessions = List.of(session);
         SleeplessNightsAnalysis analysis = new SleeplessNightsAnalysis();
         SleepAnalysisResult result = analysis.apply(sessions);
-        assertEquals(0L, result.getValue());
+        assertEquals(0, result.getValue());
     }
 
     @Test
@@ -142,7 +142,7 @@ public class SleepTrackerAppTest {
         List<SleepingSession> sessions = List.of(session);
         SleeplessNightsAnalysis analysis = new SleeplessNightsAnalysis();
         SleepAnalysisResult result = analysis.apply(sessions);
-        assertEquals(1L, result.getValue());
+        assertEquals(1, result.getValue());
     }
 
     @Test
@@ -153,7 +153,7 @@ public class SleepTrackerAppTest {
         List<SleepingSession> sessions = List.of(session);
         SleeplessNightsAnalysis analysis = new SleeplessNightsAnalysis();
         SleepAnalysisResult result = analysis.apply(sessions);
-        assertEquals(0L, result.getValue());
+        assertEquals(0, result.getValue());
     }
 
     @Test

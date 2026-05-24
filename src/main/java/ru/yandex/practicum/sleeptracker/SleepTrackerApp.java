@@ -1,13 +1,13 @@
 package ru.yandex.practicum.sleeptracker;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.function.Function;
-import java.util.stream.Stream;
 
 public class SleepTrackerApp {
 
@@ -27,12 +27,20 @@ public class SleepTrackerApp {
         analyses.stream()
                 .map(analysis -> analysis.apply(sessions))
                 .forEach(result -> System.out.println(result.getDescription() + result.getValue())
-        );
+                );
     }
 
     private static List<SleepingSession> readSessions(String path) throws IOException {
-        try (Stream<String> lines = Files.lines(Path.of(path))) {
-            return lines.map(line -> parseSession(line)).toList();
+        InputStream inputStream = SleepTrackerApp.class
+                .getClassLoader()
+                .getResourceAsStream(path);
+        if (inputStream == null) {
+            throw new IllegalArgumentException("Файл не найден" + path);
+        }
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+            return reader.lines()
+                    .map(SleepTrackerApp::parseSession)
+                    .toList();
         }
     }
 

@@ -7,7 +7,7 @@ public class CountSleepSessionsAnalysis
         implements Function<List<SleepingSession>, SleepAnalysisResult> {
     @Override
     public SleepAnalysisResult apply(List<SleepingSession> sessions) {
-        long count = sessions.size();
+        int count = sessions.size();
         return new SleepAnalysisResult("Количество сессий сна: ", count);
     }
 }
